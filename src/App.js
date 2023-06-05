@@ -1,24 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ResponseChat from './page/responseChat';
+import Login from './page/login';
+
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import PrivateRoute from './routes/privateRoutes';
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Login />,
+      children: [
+        {
+          path: '/responseChat',
+          element: <PrivateRoute><ResponseChat /></PrivateRoute>
+        },
+      ]
+    }
+  ])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <RouterProvider router={router}></RouterProvider>
     </div>
   );
 }
