@@ -6,6 +6,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Grid, Typography } from '@mui/material';
 import { respostaChat } from '../service/service';
 import Typing from 'react-typing-animation';
+import Resposta from '../utils/respostas';
 
 export default function ResponseChat() {
   const [resposta, setResposta] = useState("")
@@ -25,19 +26,21 @@ export default function ResponseChat() {
   };
 
   return (
-    <Grid container padding={1} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
-      <Grid container padding={10} sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
-        <Grid item xs={8}>
+    <Grid container padding={1} sx={{ height: '100hv', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+      <Grid container xs={8} sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+        <Grid item xs={12}>
+          <Typography align='center' variant="h4" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', color: "#d3d3d3", margin: '10px' }}>
+            Descreva seu problema
+          </Typography>
           <Paper
             component="form"
             onSubmit={callChat}
-            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}
+            sx={{ display: 'flex', alignItems: 'center', marginTop: '20px' }}
           >
             <InputBase
               id='pergunta'
               name='pergunta'
               sx={{ ml: 1, flex: 1 }}
-              placeholder="Descreva seu problema"
               inputProps={{ 'aria-label': 'search google maps' }}
             />
             <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
@@ -46,15 +49,17 @@ export default function ResponseChat() {
           </Paper>
         </Grid>
       </Grid>
-      {resposta && (
-        <Grid container sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
-          <Typography>
-            <Typing speed={100} hideCursor={true}>
-              {resposta}
-            </Typing>
-          </Typography>
-        </Grid>
-      )}
-    </Grid>
+      {
+        resposta && (
+          <Grid container sx={{ marginTop: '20px', display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
+            <Typography variant="h6" style={{ color: "#d3d3d3", margin: '10px' }}>
+              <Typing speed={50} hideCursor={true}>
+                {Resposta(resposta)}
+              </Typing>
+            </Typography>
+          </Grid>
+        )
+      }
+    </Grid >
   );
 }

@@ -41,35 +41,39 @@ export default class App extends React.Component {
       const displayName = auth.currentUser.displayName;
       const photoURL = auth.currentUser.photoURL;
       element = (
-        <Grid container style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <Grid container xs={8} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
-            <Avatar sx={{ width: 96, height: 96 }} style={{ margin: "10px" }} alt="Profile icon" src={photoURL} />
-            <h1>Seja bem-vindo {displayName}!</h1>
+        <div>
+          <Grid container xs={12} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
+            <Avatar style={{ margin: "10px" }} alt="Profile icon" src={photoURL} />
+            <Typography variant='h7' style={{ color: "#d3d3d3" }}>
+              Seja bem-vindo {displayName}!
+            </Typography>
             <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
               <IconButton onClick={() => signOut(auth)}>
                 <ExitToApp />
               </IconButton>
             </Avatar>
           </Grid>
-
           <ResponseChat />
-        </Grid>
+        </div>
       );
     } else {
       element = (
-        <Grid container style={{ background: '#000080', height: '98vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-          <Grid>
-            <img width={600} style={{ margin: "10px" }} alt="Profile icon" src='https://www.ceperj.rj.gov.br/sites/ceperj/themes/secretarias/partials/LogoCEPERJ.svg' />
+        <div >
+          <Grid container sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+            <Grid item sx={{ marginTop: '20px' }}>
+              <img width={250} style={{ margin: "10px" }} alt="Profile icon" src='https://www.ceperj.rj.gov.br/sites/ceperj/themes/secretarias/partials/LogoCEPERJ.svg' />
 
+            </Grid>
+            <Grid height={200} />
+            <Grid item sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+              <Typography variant="h8" style={{ color: "#d3d3d3", margin: '10px' }}>
+                Para entrar no chat entre com a sua conta Google
+              </Typography>
+              <input type="image" alt="Entrar com o Google"
+                onClick={signInWithGoogle} src={loginImageURL} />
+            </Grid>
           </Grid>
-          <Grid style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-            <Typography variant="h6" style={{ color: "#d3d3d3" }}>
-              Para entrar no chat entre com a sua conta Google
-            </Typography>
-            <input type="image" alt="Entrar com o Google"
-              onClick={signInWithGoogle} src={loginImageURL} />
-          </Grid>
-        </Grid >
+        </div >
       );
     }
 

@@ -19,7 +19,7 @@ function App() {
     }
   ])
   return (
-    <div className="App">
+    <div style={{ background: '#000080', height: '98vh', width: '100%' }}>
       <RouterProvider router={router}></RouterProvider>
     </div>
   );
