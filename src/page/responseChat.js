@@ -49,7 +49,7 @@ export default function ResponseChat() {
         })
     } else {
       setComplemento("")
-      setClick(false)
+      setClick(true)
       setResposta('Não foi encontrado nada a respeito na nossa base de dados')
     }
   };
