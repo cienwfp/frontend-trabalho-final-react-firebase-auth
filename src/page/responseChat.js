@@ -48,6 +48,8 @@ export default function ResponseChat() {
           console.log(err)
         })
     } else {
+      setComplemento("")
+      setClick(false)
       setResposta('Não foi encontrado nada a respeito na nossa base de dados')
     }
   };
