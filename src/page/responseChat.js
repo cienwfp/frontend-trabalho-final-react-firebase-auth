@@ -34,9 +34,14 @@ export default function ResponseChat() {
     const data = new FormData(event.currentTarget);
     if (
       data.get('pergunta').includes('senha') ||
+      data.get('pergunta').includes('login') ||
+      data.get('pergunta').includes('acesso') ||
       data.get('pergunta').includes('computador') ||
+      data.get('pergunta').includes('pc') ||
       data.get('pergunta').includes('gru') ||
       data.get('pergunta').includes('gsi') ||
+      data.get('pergunta').includes('imprimir') ||
+      data.get('pergunta').includes('impressão') ||
       data.get('pergunta').includes('impressora')
     ) {
       const body = { 'pergunta': data.get('pergunta') }
